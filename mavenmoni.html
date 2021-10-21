@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>锅炉检测</title>
+    <script src="js/echarts.js"></script>
+    <link rel="stylesheet" href="css/base.css">    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">     
+    <style>
+      #main{
+        width: 600px;
+        height:400px;
+      }
+
+      #mavenMoniChart_1{
+          top: 10%;
+      }
+      #tablediv{
+          position: absolute;
+        top: 0px !important;
+        overflow-x: none!important; 
+        overflow-y: auto!important; 
+        height: 500px!important; 
+        width:65%!important;
+      }
+      #table_1{
+    height: 100%;
+    margin: none; 
+   width: 100%;
+    position: relative;
+      }
+    </style>
+</head>
+<body>
+    <!--顶部-->
+    <header class="header left" style="position: absolute; top: 0px;">
+    
+        <div class="left nav">
+            <ul>
+                <li ><i class="nav_1"></i><a href="index.html">动态可视化</a> </li>
+                <li ><i class="nav_2"></i><a href="GasUse.html">燃气用量</a> </li>
+                <li class="nav_active"><i class="nav_3"></i><a href="mavenmoni.html">锅炉检测</a> </li>
+                <li><i class="nav_3"></i><a href="energyuse.html">用能分析</a> </li>
+
+
+            </ul>
+        </div>
+        <div class="header_center left">
+            <h2><strong>用量综合分析预警平台</strong></h2>
+            <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+        </div>
+        <div class="right nav text_right">
+            <ul> <li><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
+                <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
+                <li><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a></a> </li>
+                <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li>
+            </ul>
+        </div>
+    </header>
+    <!-- <div class="headerLine left"></div> -->
+    <!--内容部分-->
+    <!-- < class="con left"> -->
+        <!--选择时间-->
+        <!-- <div class="static_top left"> -->
+    
+
+        <!-- <div class="staticTitle" style="position: absolute; top: 80px;">
+            <i></i><span>燃气用量</span>
+        </div> -->
+        <!--数据总概-->
+        <!-- <div id="tablediv" >
+        <div id="table_1">
+    
+    <table class="table table-bordered" style="position: absolute;top: 120px;bottom: 50%;width: 100%;">
+        <thead><tr>
+            <th>时间</th>
+            <th>采暖供水</th></th>
+            <th>采暖回水</th></th>
+            <th>瞬时流量</th></th>
+            <th>燃气瞬时释放热量</th></th>
+            <th>水吸收热量</th>
+            <th>热占比</th>
+        </tr></thead>
+        <tbody id="mavenmoniTable"  style="font-size: 10px;">
+        </tbody>
+    </table>
+    </div>
+    </div> -->
+       
+<div class="mavenmoniback"  style="background: url(img/bg.jpg);position: absolute; top: 80px;height: 92%;width: 100%;">
+    <div class="panel panel-default" style="position: absolute; top: 20%;
+    top: 10px !important;
+    left: 10%;
+    overflow-x: none!important; 
+    overflow-y: auto!important; 
+    height: 50%!important; 
+    width:80%!important;
+    background-color: #000A37!important;
+    border-width: 10px!important;
+    border-color: white;">
+    <div id="table_1"> 
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="font-size: 20px;text-align: center;color: white;">锅炉检测表</div>
+      
+        <!-- Table -->
+        <table class="table" style="color: white" data-search="true" data-show-refresh="true">
+
+                <thead><tr>
+                    <th>时间</th>
+                    <th>采暖供水</th></th>
+                    <th>采暖回水</th></th>
+                    <th>瞬时流量</th></th>
+                    <th>燃气瞬时释放热量</th></th>
+                    <th>水吸收热量</th>
+                    <th>热占比</th>
+                </tr></thead>
+                <tbody id="mavenmoniTable"  style="font-size: 20px;">
+                </tbody>
+            
+        </table>
+      </div>
+    </div>
+    </div>
+    <!-- <div class="list-group" style="position: absolute; top: 100px; left: 90%; right: 100%;width:600px; height: 400px;">
+        <button type="button" class="list-group-item" onclick="myFunction_1()">复位</button>
+        <button type="button" class="list-group-item" onclick="addfunc_1()">下一个</button>
+        <button type="button" class="list-group-item" onclick="decfunc_1()">上一个</button>
+      </div> -->
+      <div class = "mavenCharts_demo" style="position: absolute;height: 400px; width: 600px;top:57%;left:32%;background-color: #000A37;">
+        <div class="btn-group" role="group" aria-label="..." style="position: absolute; top: 2px; left: 70%;width:250px; height: 30px; ">
+            <button type="button" class="btn btn-default" onclick="myFunction_1()" style="background-color: #000A37!important ; color: white; height: 30px;font-size: 10px;">复位</button>
+            <button type="button" class="btn btn-default" onclick="addfunc_1()"  style="background-color: #000A37!important ;color: white; height: 30px;font-size: 10px;">下一个</button>
+            <button type="button" class="btn btn-default" onclick="decfunc_1()" style="background-color: #000A37!important ;color: white; height: 30px;font-size: 10px;">上一个</button>
+          </div>
+        <!-- <div class="dropdown" style="position: absolute; top: 100px; left: 90%; right: 100%;width:600px; height: 400px;">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <button  id = "button_1" onclick="myFunction_1()" >复位</button>
+            <button  onclick="addfunc_1()" >下一个</button>
+            <button  onclick="decfunc_1()" >上一个</button>
+            </div>
+            </div> -->
+       
+            <div id= "mavenmonitor_1" style="position: absolute; top: 10%; left: 0px; right :40%;width:600px; height: 380px;background-color: rgba(0, 10, 55,0.2);"></div>
+    </div>
+    </div>
+      
+</div>
+
+    <script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<script src="js/echarts-all.js"></script>
+<script src="js/base.js"></script>
+<script src="js/ajax.js"></script>
+
+
+<script>
+    var choiseChart =0;
+    function myFunction_1(){
+       choiseChart=0;
+        //  console.log(choiseChart);
+        // return choiseChart;
+        mavenmonitorfunc();
+    }
+    function addfunc_1(){
+        choiseChart++;
+        if(choiseChart >= 6)
+            choiseChart =5;
+        
+        //  console.log(choiseChart);
+        // return choiseChart;
+        mavenmonitorfunc();
+
+    }
+    function decfunc_1(){
+        choiseChart--;
+        if(choiseChart < 0)
+            choiseChart = 0;
+        //  console.log(choiseChart);
+        // return choiseChart;
+        mavenmonitorfunc();
+
+    }
+</script>
+<script src='js/mavenmonitor.js'></script>
+<script src='js/mavenmonidata.js'></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+
+<!-- <script src="js/static.js"></script> -->
+
+</body>
+</html>

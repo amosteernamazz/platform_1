@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用量综合分析平台</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+    <style>
+      input::-webkit-input-placeholder{
+        color: white;
+
+      }
+      
+      .container {
+height: 70px;
+width: 800px;
+/* margin: 100px auto 0 auto; */
+}
+.parent {
+position: relative;
+}
+.search {
+width: 600px;
+height: 80px;
+border-radius: 18px;
+outline: none;
+border: 1px solid #ccc;
+padding-left: 20px;
+position: absolute;
+margin-left: 55%;
+margin-top: 40px;
+background-color: #eeeeee;
+}
+.btn {
+height: 60px;
+width: 60px;
+position: absolute;
+background: url("img/search.png") no-repeat -2px -99px;
+top: 0px;
+left: 80%;
+border: none;
+outline: none;
+cursor: pointer;
+}
+#searchButton{
+  position: absolute;
+  left: 85%;
+  margin-left: 38%;
+  margin-top: 48px;
+}
+input::-webkit-input-placeholder {
+        color: #1f2329;
+        font-size: 22px;
+    }
+    
+textarea::-webkit-input-placeholder{
+  font-size: 22px;
+
+
+}
+.helpback{
+    /* position:relative; */
+    background-color: #ffffff;
+    border-radius: 18px;
+    border-color: #ffffff; 
+    border-style:solid;
+    position: absolute;
+    height: 25px;
+    width: 70%;
+    top:-15px;
+    color: #000000;
+    font-weight: bold; 
+    font-size: 13px;
+    left: 15%;
+    line-height: 20px;
+    text-align: center;
+}
+    </style>
+</head>
+<script>
+  window.onload = function(){
+      var oBtn = document.getElementById("infoSend");
+      var aInputs = document.getElementById("testcontext");
+      var oAlert = document.getElementById("alert_info");
+
+      oBtn.onclick = function(){
+          $ajax({
+              method: "post",
+              url: "mysql/feedback.php",
+              data: {
+                  info: aInputs.value,
+                  addTime: new Date().getTime()
+              },
+              success: function(result){
+                console.log(aInputs.value);
+
+                        //alert(result);
+                        var obj = JSON.parse(result);
+                        //console.log(obj);
+                        if(obj.code){
+                            oAlert.className = 'alert alert-danger';
+                        }else{
+                            oAlert.className = 'alert alert-success';
+                            
+                        }
+                        oAlert.style.display = 'block';
+                        oAlert.innerHTML = obj.message;
+                    },
+                    error: function(msg){
+                        alert(msg);
+                    }
+          })
+      }
+  }
+</script> 
+<body>
+<!--顶部-->
+<header class="header left">
+
+    <div class="left nav">
+        <ul>
+            <li><i class="nav_1"></i><a href="index.html">动态可视化</a> </li>
+            <li><i class="nav_2"></i><a href="gasuse.html">燃气用量</a> </li>
+            <li><i class="nav_3"></i><a href="mavenmoni.html">锅炉检测</a> </li>
+            <li><i class="nav_3"></i><a href="energyuse.html">用能分析</a> </li>
+           <!-- <li><i class="nav_3"></i><a href="map.html">地图界面</a> </li> -->
+
+        </ul>
+    </div>
+    <div class="header_center left">
+        <h2><strong>用量综合分析平台</strong></h2>
+        <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+    </div>
+    <div class="right nav text_right">
+        <ul> 
+            <li><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
+            <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
+            <li class="nav_active"><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a> </li>
+            <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a> </li>
+        </ul>
+    </div>
+
+</header>
+<!-- <div class="headerLine left"></div> -->
+<!--内容部分-->
+<div class="mavenmoniback"  style="background: url(img/bg.jpg);position: absolute; top: 80px;height: 92%;width: 100%;">
+
+  <!-- <form class="search-component" method="get" action="#">
+    <input aria-label="Search Field" type="text" placeholder= "我们可如何帮助你？"name="s"  style="margin-left: 40%;margin-top: 20%;width: 200px; height: 40px; background: url(/img/bg.jpg);border-color:white;" ></input>>
+    <button type="submit" aria-label="Search" style="width: 100px; height:100px;"></button>
+    </form> -->
+    
+  
+    <div class="searchDiv" style="position: absolute; left: 100px;top: 100px;">
+    <div class="container">
+      <form action="" class="parent">
+      <input type="text" class="search" placeholder="我们可如何帮助你？">
+      <input type="button" name="" id="searchButton" class="btn" style="background: url(img/search.png)">
+      </form>
+      </div>
+    </div>
+    <div class="input-group" style="top: 40%; left: 25%;">
+      <div class="input-group-prepend">
+        <span class="input-group-text" style="color: white;">描述当前的情况
+        </span>
+      </div>
+      <textarea class="form-control" id="testcontext" aria-label="With textarea" style=" top:10px;height: 220px;width: 800px; " placeholder="请记住不要包含个人信息，如电话号码等。"></textarea>
+
+    </div>
+    <div id = 'alert_info' class = 'alert alert-danger' style="position: absolute; top: 94%;width: 100%;"></div>
+
+    <!-- Split button -->
+    <div class="btn-group" role="group" aria-label="..." style="position: absolute; left: 50%; top: 80%">
+      <button type="button" class="btn btn-default" style="color: white;background-color: #000A37;border: 1px solid #FFFFFF; height: 40px;width: 100px;">取消</button>
+      <button type="button" id="infoSend" class="btn btn-default" style="color: white;background-color: #000A37; border: 1px solid #FFFFFF; height: 40px;width: 100px;">发送</button>
+      
+    </div>
+
+<!--   
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" id="exampleInputFile">
+          <p class="help-block">Example block-level help text here.</p>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+    <!-- <div class="div_any_child">
+        <div class="div_any_title"><img src="img/title_2.png">案例 </div>
+        <ol class="">
+            <li><a href="#">案例一</a></li>
+            <li><a href="#">案例二</a></li>
+            <li><a href="#">案例三</a></li>
+        </ol>
+    </div> -->
+
+
+</div>
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<!-- <script src="js/CaseStorage.js"></script> -->
+<script src="js/ajax.js"></script>
+<!-- <script src="js/HistoryInfo.js"></script> -->
+<!-- <script src="js/static.js"></script> -->
+
+</body>
+</html>

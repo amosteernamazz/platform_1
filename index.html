@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用量综合分析平台</title>
+    <meta name="keywords" content="平台网站模板" />
+    <meta name="description" content="" /> 
+    <meta name="author" content="js代码(www.jsdaima.com)" />
+    <meta name="copyright" content="js代码(www.jsdaima.com)" />
+    <link rel="stylesheet" href="css/base.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        #flowPic{
+            width: 100%;
+        height:100%;
+        margin-top: 4%;
+        
+        }
+        #chart2{
+            
+            
+            width: 100%;
+        height:100%;
+        margin-top: 4%;
+        }
+        #chart2_2{
+           
+            
+            width: 100%;
+        height:100%;
+        margin-top: 4%;
+        }
+        #shakePic{
+            background-color: #001051;
+            width: 100%;
+            height: 100%;
+
+        }
+        #gasPic{
+            margin-top: 10%;
+            background-color: #001051;
+            width: 100%;
+            height: 70%;
+        }
+        .table_1_show{
+            color: #ffffff!important;
+        }
+        li::selection	{
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<!--顶部-->
+<div class = 'container_index'>
+<header class="header left">
+
+    <div class="left nav" >
+        <ul>
+            <li class="nav_active"><i class="nav_1"></i><a href="index.html">动态可视化</a> </li>
+            <li><i class="nav_2"></i><a href="gasuse.html">燃气用量</a> </li>
+            <li><i class="nav_3"></i><a href="mavenmoni.html">锅炉检测</a> </li>
+            <li><i class="nav_3"></i><a href="energyuse.html">用能分析</a> </li>
+
+ 
+
+            </ul>
+    </div>
+    <div class="header_center left">
+        <h2><strong>用量综合分析预警平台</strong></h2>
+        <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+    </div>
+    <div class="right nav text_right">
+        <ul> 
+            <li><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
+            <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
+            <li><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a> </li>
+            <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a> </li>
+        </ul>
+    </div>
+
+</header>
+<!-- <div class="headerLine left"></div> -->
+<!--内容部分-->
+<div class="con left" style="background: url(img/bg.jpg);">
+ 
+    <!--统计分析图-->
+    <!-- <div class="div_any"> -->
+        <div class="left div_any01">
+            <div class="div_any_child" style="background: url(img/bg.jpg); color: white; height:450px">
+                <!-- <span></span> -->
+               
+                <div class="div_any_title" style="background: url(img/bg.jpg); color: white;"><img src="img/title_1.png">预警显示模块 </div>
+                <div class = "warningLabel" style="left: 20%;width: 0px;height: 0px;margin-left: 75%;margin-top: 2%;">
+                    <img class="warning-Label" src="img/warningLight.gif" alt="warningLabel" style=" margin: none; left: 80%;" >
+                </div>
+                <div class="tableBox" style="margin-left: 10%;margin-top:10%;width: 70%;height: 70%;">
+                    
+                    <div class="table_p " style="border: none;color: white;overflow: scroll;">
+
+                        <table class="fontfeat">
+                            <thead  class="table_1_show"><tr>
+                                <th class="table_1_show">设备ID</th>
+                                <th class="table_1_show">设备位置</th>
+                                <th class="table_1_show">设备状态</th>
+                            </tr>
+                            </thead>
+                            <tbody id="equipTable_2" >
+                            <!-- <tr><td>1</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>2</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>3</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>4</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>5</td><td>厂房1</td><td>正常</td></tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- <div id="flowPic">
+                </div> --> 
+                <!-- <p id="flowPic"></p> -->
+                <!-- <p id="lineChart" class="p_chart"></p> -->
+                <!-- <p id="char1" class="p_chart"></p> -->
+            </div>
+            <div class="div_any_child" style="background: url(img/bg.jpg); color: white;top: 10%;margin-top: 20px;height:350px">
+                <div class="div_any_title" style="background: url(img/bg.jpg);color: white; "><img src="img/title_2.png">燃气计量数据显示 </div>
+                <div class = "demo_1"  style="background: url(img/bg.jpg); color: white;top: 10%;margin-top: 20px; width:50%; height: 90%;;margin-top: 30;">
+                    <div id= "chart2" style="color: white;border: none;margin-top: none;"></div>
+                    <div id= "chart2_2" style=" position: absolute;left: 50%;margin-top: none;background-color: none;color: white;border: none;top:0%;width: 50%;height: 100%;"></div>
+                
+                <!-- <p id="char2" class="p_chart"></p> -->
+                <!-- <video id="infraredVideo" controls="controls" autoplay >
+                    <source src="./pythonOutput/video/test.mp4" type="video/mp4">
+                   
+                </video> -->
+                <!-- <button class="details" onclick="ShowDetails()" >详细信息</button> -->
+            </div>
+            
+        </div>
+        </div>
+        <div class="div_any02 left " >
+            <div class="div_any_child div_height" style="height: 650px !important; background: url(img/bg.jpg);" >
+                <div id="detailsTitle"class="div_any_title any_title_width" style="color: white;background: url(img/bg.jpg);"><img src="img/title_3.png">热力分布图 </div>
+                <div id="map_div" style="background-color:#000A37; background: url(img/bg.jpg);" >
+                
+                </div>
+                <!-- <div id="videoDetails" hidden>
+                    <video id="detailsVideo" controls="controls" autoplay >
+                        <source src="./pythonOutput/video/test.mp4" type="video/mp4"> 
+                    </video> 
+                    <div id="detailsText">
+                        <div> 
+                            预警日志:
+                        </div>
+                        <div id="detailsInfo">
+
+                        </div>
+                    </div>
+                    <button class="detailsBack" onclick="BackDetails()" >后退</button>
+
+                   </div> -->
+            </div>
+            <div class="div_any_child_equipment " style="background: url(img/bg.jpg); color: white;height: 150px ; border: 2px solid #ffffff;
+            box-sizing: border-box;">
+                <div class="div_any_title" style="background: url(img/bg.jpg); color: white;"><img src="img/title_2.png">流动表单模块</div>
+                <div class="tableBox" style="height: 140px; ">
+                    <div class="table_p " style="border: none;color: white; top: 0px; height: 120px; margin-top: 0px;">
+
+                        <table class="fontfeat">
+                            <thead  class="table_1_show"><tr>
+                                <th class="table_1_show">设备ID</th>
+                                <th class="table_1_show">设备位置</th>
+                                <th class="table_1_show">设备状态</th>
+                            </tr>
+                            </thead>
+                            <tbody id="equipTable" >
+                            <!-- <tr><td>1</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>2</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>3</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>4</td><td>厂房1</td><td>正常</td></tr>
+                            <tr><td>5</td><td>厂房1</td><td>正常</td></tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right div_any01" >
+            <div class="div_any_child" style="background: url(img/bg.jpg);height: 450px">
+                <div class="div_any_title" style="background: url(img/bg.jpg);color: white;"><img src="img/title_4.png">锅炉能耗数据 </div>
+                <div id="shakePic" style="background: url(img/bg.jpg);color: white;margin-top: 12px;"></div>
+                <!-- <p  id="shakePic"></p> -->
+                <!-- <p id="char1" class="p_chart"></p> -->
+            </div>
+            <div class="div_any_child" style="background: url(img/bg.jpg);height: 350px">
+                <div class="div_any_title" style="background: url(img/bg.jpg);color: white;"><img src="img/title_5.png">信息处理数据 </div>
+                <!-- <p id="gasPic"></p> -->
+                <div class="col-lg-6" >
+                    <ul class="nav nav-tabs" id="chartsshow4" style="width: 405px;left: 0px;">
+                        <li  class="active" id="chart6_1" style="height: 10px;width: 95px;" onclick="changeshow(this)">
+                            <a href="#">
+                            <div style="font-size: 10px;  color: #ffffff;">热量折线图</div>
+                            </a>
+                        </li>
+                        <li  id="chart6_2" style="height: 5px;width: 95px;"  onclick="changeshow(this)" >
+                            <a href="#">
+                                <div style="font-size: 10px; color: #ffffff;">聚类分析图</div>
+                            </a>
+                        </li  >
+                        <li id="chart6_3" style="height: 10px;width: 120px;" onclick="changeshow(this)">
+                            <a href="#">
+                                <div style="font-size: 10px; color: #ffffff;">燃气气量折线图</div>
+                             </a>
+                        </li > 
+                        <li id="chart6_4"  style="height: 10px;width: 95px;" onclick="changeshow(this)" >
+                            <a href="#">
+                                <div style="font-size: 10px; color: #ffffff;">异常检测图</div>
+                            </a>
+                        </li>
+                        <!-- <li style="height: 20px; width: 60px; font-size: 10px;"><a href="#">Contact</a></li> -->
+                    </ul>
+                </div>
+                <div id="gasPic" style="background: url(img/bg.jpg);color: white;"></div>
+                <!-- <p id="char4" class="p_chart"></p> -->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<script src="node_modules/babel-standalone/babel.min.js"></script>
+
+<!-- <script src="js/renderCom.js"></script> -->
+<!-- <script src="js/videoCom.js"></script> -->
+<script src="js/echarts.js"></script>
+
+
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<!-- <script src="js/echarts-all.js"></script> -->
+<script src="js/base.js"></script>
+
+<!-- <script src="js/dataProcess.js"></script> -->
+<script src="js/ajax.js"></script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="js/map.js"></script>
+
+<script src="js/updateChart_4.js"></script>
+<script src="js/charts1_new.js"></script>
+<script src="js/showchart2.js"></script>
+<script src="js/showcharts2_2.js"></script>
+<script src="js/showchart1.js"></script>
+<script src="js/warningtable.js" ></script>
+<script src="js/showchart3.js"></script>
+<script src="js/showchart4.js"></script>
+
+</body>
+</html>
