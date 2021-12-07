@@ -5,6 +5,9 @@
     <title>用量综合分析平台</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <style>
       input::-webkit-input-placeholder{
         color: white;
@@ -27,8 +30,8 @@ outline: none;
 border: 1px solid #ccc;
 padding-left: 20px;
 position: absolute;
-margin-left: 55%;
-margin-top: 40px;
+margin-left: 0%;
+margin-top: 0px;
 background-color: #eeeeee;
 }
 .btn {
@@ -37,16 +40,17 @@ width: 60px;
 position: absolute;
 background: url("img/search.png") no-repeat -2px -99px;
 top: 0px;
-left: 80%;
+left: 0%;
 border: none;
 outline: none;
 cursor: pointer;
 }
 #searchButton{
   position: absolute;
-  left: 85%;
-  margin-left: 38%;
-  margin-top: 48px;
+  top:16% ; 
+  left: 70%;
+  margin-left: 0%;
+  margin-top: 0%;
 }
 input::-webkit-input-placeholder {
         color: #1f2329;
@@ -84,6 +88,7 @@ textarea::-webkit-input-placeholder{
       var oAlert = document.getElementById("alert_info");
 
       oBtn.onclick = function(){
+        // console.log( typeof aInputs.value);
           $ajax({
               method: "post",
               url: "mysql/feedback.php",
@@ -92,7 +97,7 @@ textarea::-webkit-input-placeholder{
                   addTime: new Date().getTime()
               },
               success: function(result){
-                console.log(aInputs.value);
+                // console.log(aInputs.value);
 
                         //alert(result);
                         var obj = JSON.parse(result);
@@ -128,22 +133,22 @@ textarea::-webkit-input-placeholder{
         </ul>
     </div>
     <div class="header_center left">
-        <h2><strong>用量综合分析平台</strong></h2>
-        <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+        <h2 style="height: 30%;"><strong>用能综合分析预警软件平台</strong></h2>
+        <p class="color_font"><small>Comprehensive energy use analysis and early warning software platform</small></p>
     </div>
     <div class="right nav text_right">
         <ul> 
             <li><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
             <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
             <li class="nav_active"><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a> </li>
-            <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a> </li>
+            <!-- <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a> </li> -->
         </ul>
     </div>
 
 </header>
 <!-- <div class="headerLine left"></div> -->
 <!--内容部分-->
-<div class="mavenmoniback"  style="background: url(img/bg.jpg);position: absolute; top: 80px;height: 92%;width: 100%;">
+<div class="mavenmoniback"  style="background: url(img/bg.jpg);position: absolute; top: 80px;height: 94%;width: 100%;">
 
   <!-- <form class="search-component" method="get" action="#">
     <input aria-label="Search Field" type="text" placeholder= "我们可如何帮助你？"name="s"  style="margin-left: 40%;margin-top: 20%;width: 200px; height: 40px; background: url(/img/bg.jpg);border-color:white;" ></input>>
@@ -151,28 +156,60 @@ textarea::-webkit-input-placeholder{
     </form> -->
     
   
-    <div class="searchDiv" style="position: absolute; left: 100px;top: 100px;">
+    <div class="searchDiv" style="position: absolute; left: 25%;top: 10%;">
     <div class="container">
       <form action="" class="parent">
       <input type="text" class="search" placeholder="我们可如何帮助你？">
-      <input type="button" name="" id="searchButton" class="btn" style="background: url(img/search.png)">
+      <input type="button" name="" id="searchButton" class="btn" style="background: url(img/search.png)" onclick="detailShow()" >
       </form>
       </div>
     </div>
-    <div class="input-group" style="top: 40%; left: 25%;">
+
+    <div class="input-group" style="top: 40%; left: 10%;height: 5%;">
       <div class="input-group-prepend">
-        <span class="input-group-text" style="color: white;">描述当前的情况
+        <span class="input-group-text" style="color: white;font-size: 20px; height: 50px; ">描述当前的情况
         </span>
       </div>
-      <textarea class="form-control" id="testcontext" aria-label="With textarea" style=" top:10px;height: 220px;width: 800px; " placeholder="请记住不要包含个人信息，如电话号码等。"></textarea>
+      <textarea class="form-control" id="testcontext" aria-label="With textarea" style=" position: absolute;height: 220px;width: 800px; " placeholder="请记住不要包含个人信息，如电话号码等。"></textarea>
 
     </div>
-    <div id = 'alert_info' class = 'alert alert-danger' style="position: absolute; top: 94%;width: 100%;"></div>
+    <div id = 'alert_info' class = 'alert alert-danger' style="position: absolute; top: 97%;width: 100%;  height: 3%;"></div>
 
     <!-- Split button -->
-    <div class="btn-group" role="group" aria-label="..." style="position: absolute; left: 50%; top: 80%">
+    <div class="btn-group" role="group" aria-label="..." style="position: absolute; left: 40%; top: 80%">
       <button type="button" class="btn btn-default" style="color: white;background-color: #000A37;border: 1px solid #FFFFFF; height: 40px;width: 100px;">取消</button>
       <button type="button" id="infoSend" class="btn btn-default" style="color: white;background-color: #000A37; border: 1px solid #FFFFFF; height: 40px;width: 100px;">发送</button>
+      
+    </div>
+    <div class= "feedbackCharts" style="position: absolute; left: 70%; top: 40%; height: 400px; width: 400px; color: white;"> 
+
+      <div class="panel panel-default" style="position: absolute; top: 20%;
+top: 10px !important;
+left: 10%;
+overflow-x: none!important; 
+overflow-y: auto!important; 
+height: 80%!important; 
+width:80%!important;
+background-color: #000A37!important;
+border-width: 10px!important;
+color: white !important;;">
+      <div id="table_1"> 
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="font-size: 20px;text-align: center;color: white;">用户信息反馈表</div> </div>
+      
+        <!-- Table -->
+        <table class="table" style="color: white;position: absolute;top: 0%;" data-search="true" data-show-refresh="true">
+
+                <thead><tr>
+                    <th>序号</th>
+                    <th>反馈信息</th></th>
+                    <th>时间</th></th>
+                </tr></thead>
+                <tbody id="feedbackTable">
+                </tbody>
+            
+        </table>
+     
       
     </div>
 
@@ -209,9 +246,14 @@ textarea::-webkit-input-placeholder{
 
 
 </div>
+</div>
 <script src="js/jquery/jQuery-2.2.0.min.js"></script>
 <!-- <script src="js/CaseStorage.js"></script> -->
 <script src="js/ajax.js"></script>
+ <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+ <script src="js/feedback.js"></script>
+ <script src="js/showHelp.js"></script>
 <!-- <script src="js/HistoryInfo.js"></script> -->
 <!-- <script src="js/static.js"></script> -->
 

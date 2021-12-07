@@ -17,7 +17,7 @@
 </head>
 <body>
 <!--顶部-->
-<header class="header left">
+<header class="header left" style="position: absolute; top: 0px;">
 
     <div class="left nav">
         <ul>
@@ -29,14 +29,14 @@
         </ul>
     </div>
     <div class="header_center left">
-        <h2><strong>用量综合分析预警平台</strong></h2>
-        <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+        <h2 style="height: 30%;"><strong>用能综合分析预警软件平台</strong></h2>
+        <p class="color_font"><small>Comprehensive energy use analysis and early warning software platform</small></p>
     </div>
     <div class="right nav text_right">
         <ul> <li class="nav_active"><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
             <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
             <li><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a></a> </li>
-            <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li>
+            <!-- <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li> -->
         </ul>
     </div>
     <!--<nav class="left nav">-->
@@ -59,7 +59,7 @@
 <!-- <div class="headerLine left"></div> -->
 <!--内容部分-->
 
-<div class="mavenmoniback" style="background: url(img/bg.jpg);position:absolute;top:80px;height: 92%; width: 100%;">
+<div class="mavenmoniback" style="background: url(img/bg.jpg);position:absolute;top:80px;height: 94%; width: 100%;">
     <!--选择时间-->
     <!-- <div class="static_top left"> -->
 
@@ -67,7 +67,6 @@
         <i></i><span>历史信息</span>
     </div> -->
     <!--数据总概-->
-    <div class="panel panel-default" style="color: white!important;">
         
         <div class="panel panel-default" style="position: absolute; top: 20%;
 top: 10px !important;
@@ -82,17 +81,18 @@ color: white !important;;">
         <div id="table_2" style="color: white!important;"> 
         <div class="panel-heading" style="font-size: 20px;text-align: center;color: white;">燃气预警表</div></div>
 
-<table class="table" style="color: white; ">
+<table class="table" style="color: white;position: absolute;top: -0%;">
     <thead><tr>
         <th>时间</th>
-        <th>预警地点</th></th>
-        <th>预警等级</th></th>
-        <th id="showTip">预警原因</th>
+        <th>k-mean</th>
+        <th>islocation</th>
+        <th>lof</th>
+        <th>SVM</th>
+        <th id="showTip">预警等级</th>
     </tr></thead>
     <tbody id="historyTable">
     </tbody>
 </table>
-</div>
 </div>
 </div>
 
@@ -100,22 +100,59 @@ color: white !important;;">
     <div id= "warningchart" style="color: white;border: none;margin-top: none;"></div>
 </div>
 
+    
+<div class="dropdown" style="position: absolute; top:10%;left:2%;height:10%">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 30%; position: relative;">
+      地点选择
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5" style="position:absolute;top: 15%;left: 2%; height:70%">
+      <li><a id="BQJcom" onclick="changecomLocation('BQJcom')" >北七家</a></li>
+      <li><a id="XBWcom" onclick="changecomLocation('XBWcom')" style="background: white;">西北旺</a></li>
+      <li><a id="HScom" onclick="changecomLocation('HScom')" style="background: white;">黄寺</a></li>
+      <!-- <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li> -->
+    </ul>
+    
+  </div>
+  <div class="dropdown" style="position: absolute; top:30%;left:2%;height:10%" >
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 30%; position: relative;">
+      锅炉编号选择
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu6" style="position:absolute;top: 19%;left: 2%; height:70%">
+      <li><a id="gas#1" onclick= "changecomMav('gas#1')" >#1</a></li>
+      <li><a id="gas#2" onclick= "changecomMav('gas#2')" style="background: white;">#2</a></li>
+      <li><a id="gas#3" onclick= "changecomMav('gas#3')"  style="background: white;">#3</a></li>
+      <!-- <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li> -->
+    </ul>
+  </div>
+  <div class="btn-group" role="group" aria-label="..." style="position: absolute;left: 2%;top:60%; height: 50px;">
+    <button type="button" class="btn btn-default" onclick="changecomData()" style="height: 50px;">确认</button>
+  </div>
 
 
 </div>
-<script src="js/jquery/jQuery-2.2.0.min.js"></script>
-<script src="js/echarts-all.js"></script>
-<script src="js/base.js"></script>
-<script src="js/HistoryInfo.js"></script>
-<script src="js/ajax.js"></script>
-<script src="js/warningChart.js"></script>
-<script src="js/echarts.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<script src="js/echarts-all.js"></script>
+<script src="js/base.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/echarts.js"></script>
 
-    
+
+<!-- 表的函数 -->
+<script src="js/HistoryInfo.js"></script>
+
+<!-- 图的函数 -->
+<script src="js/warningChart.js"></script>
+
+<!-- update函数 -->
+<script src="js/updateWarning.js"></script>
+
 
 <!-- <script src="js/static.js"></script> -->
 

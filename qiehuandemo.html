@@ -1,0 +1,29 @@
+
+<body>
+    <button onclick="start()">按钮一</button>
+    <button onclick="stop()">按钮二</button>
+    
+    <script type="text/javascript">
+	var interval = null;//计时器
+	var i = 0;
+	function start(){//启动计时器函数
+        	if(interval!=null){//判断计时器是否为空
+        		clearInterval(interval);
+			interval=null;
+		}
+ 
+		interval = setInterval(overs,1000);//启动计时器，调用overs函数，
+	}
+			
+	function overs(){
+		i++;
+		console.log(i);	
+	}
+ 
+        function stop(){	
+        	clearInterval(interval);
+            i = 0 
+		interval = null;
+	}
+    </script>
+</body>

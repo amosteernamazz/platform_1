@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--请务必先引入jquery-->
+		<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+        <script src="./fontshow.js"></script>
+
+		<!--此为本led样式的脚本-->
+	</head>
+	<style type="text/css">
+
+	</style>
+
+	<body>
+		<h1>html页面实现led样式的效果预览</h1>
+		<h3>宽为50像素，高为100像素，灯亮部分为5像素,颜色为橘子色，像右边倾斜10度的led效果</h3>
+		<div class="test1"></div>
+		<h3>宽为50像素，高为100像素，灯亮部分为5像素,颜色为红色，像左边倾斜30度的led效果；想要不显示数字只需要传入非数字与小数点、负数符号的即可，如此处
+		-0123abc=45678.9；只会识别数字的内容
+		</h3>
+		<div class="test11"></div>
+		<h3>30，高为60像素，灯亮部分为3像素,颜色为天空蓝，不倾斜的led效果</h3>
+		<div class="test2"></div>
+			
+	</body>
+	<script type="text/javascript">
+		let led = new LedStyle(50,100,5,'.test1','orange','-10');
+		led.setValues('012345678.9');
+		
+		let led11 = new LedStyle(50,100,5,'.test11','red','30');
+		led11.setValues('-0123abc=45678.9');
+		
+		let led1 = new LedStyle(30,60,3,'.test2','skyblue');
+		led1.setValues('1.23');
+		
+	</script>
+</html>

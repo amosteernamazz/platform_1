@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用量综合分析平台</title>
+    <title>统计分析界面</title>
     <link rel="stylesheet" href="css/base.css">
-    
-
 </head>
 <body>
 <!--顶部-->
@@ -13,20 +11,21 @@
 
     <div class="left nav">
         <ul>
-            <li><i class="nav_1"></i><a href="index.html">动态可视化</a> </li>
-            <li class="nav_active"><i class="nav_2"></i><a href="Comprehensive.html">综合异常预警</a> </li>
-           <!-- <li><i class="nav_3"></i><a href="map.html">地图界面</a> </li> -->
-
-        </ul>
+            <li class="nav_active"><i class="nav_1"></i><a href="index.html">动态可视化</a> </li>
+            <li><i class="nav_2"></i><a href="GasUse.html">燃气用量</a> </li>
+           <li><i class="nav_3"></i><a href="map.html">锅炉检测</a> </li>
+           <li><i class="nav_2"></i><a href="Comprehensive.html">用能分析</a> </li>
+            </ul>
     </div>
     <div class="header_center left">
-        <h2 style="height: 30%;"><strong>用量综合分析平台</strong></h2>
-        <p class="color_font"><small>Comprehensive service platform for xxxx</small></p>
+        <h2><strong>用量综合分析预警平台</strong></h2>
+        <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
     </div>
     <div class="right nav text_right">
-        <ul> <li><i class="nav_7"></i><a href="HistoryInfo.html">历史信息</a> </li>
-            <li><i class="nav_8"></i><a href="Report.html">报表生成</a> </li>
-            <li><i class="nav_4"></i><a href="CaseStorage.html">案例存储</a> </li>
+        <ul> <li><i class="nav_7"></i><a href="HistoryInfo.html">综合预警</a> </li>
+            <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
+            <li><i class="nav_8"></i><a href="Report.html">帮助与反馈</a> </li>
+            <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li>
         </ul>
     </div>
     <!--<nav class="left nav">-->
@@ -53,36 +52,33 @@
     <!-- <div class="static_top left"> -->
 
     <div class="staticTitle">
-        <i></i><span>统计概况</span>
+        <i></i><span>历史信息</span>
     </div>
     <!--数据总概-->
     <div class="stiatic_top_con left">
 
-<table id="comprehensiveTable">
-    <tr>
-        <td class="labe_td">总概：</td>
-        <td colspan="3" class="sky">统计时间：xx:xx:xx，异常设备共x台</td>
-    </tr>
-    <tr>
-        <td class="labe_td">流速-压损异常：</td>
-        <td class="org">xx台</td>
-        <td class="labe_td">红外预警异常：</td>
-        <td class="org">xx台</td>
-    </tr>
-    <tr>
-        <td class="labe_td">振动异常：</td>
-        <td class="red">xx台</td>
-        <td class="labe_td">用气异常：</td>
-        <td class="org">xx台</td>
-    </tr>
+<table>
+    <thead><tr>
+        <th>事件ID</th>
+        <th>发生时间</th>
+        <th>异常设备ID</th>
+        <th>异常设备位置</th>
+        <th>报警类型</th>
+        <th>异常值</th>
+    </tr></thead>
+    <tbody id="historyTable">
+    </tbody>
 </table>
 </div>
 
 
 
+
 </div>
 <script src="js/jquery/jQuery-2.2.0.min.js"></script>
-<script src="js/Comprehensive.js"></script>
+<script src="js/echarts-all.js"></script>
+<script src="js/base.js"></script>
+<script src="js/HistoryInfo.js"></script>
 <script src="js/ajax.js"></script>
 <!-- <script src="js/static.js"></script> -->
 

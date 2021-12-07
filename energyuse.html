@@ -6,7 +6,6 @@
     <script src="js/echarts.js"></script>
     <link rel="stylesheet" href="css/base.css">    
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> 
         
     <style>
@@ -40,14 +39,14 @@
             </ul>
         </div>
         <div class="header_center left">
-            <h2><strong>用量综合分析预警平台</strong></h2>
-            <p class="color_font"><small>Comprehensive usage analysis and early warning platform</small></p>
+            <h2 style="height: 30%;"><strong>用能综合分析预警软件平台</strong></h2>
+            <p class="color_font"><small>Comprehensive energy use analysis and early warning software platform</small></p>
         </div>
         <div class="right nav text_right">
             <ul> <li><i class="nav_7"></i><a href="compwarning.html">综合预警</a> </li>
                 <li><i class="nav_8"></i><a href="Report.html">用户建议</a> </li>
                 <li><i class="nav_4"></i><a href="CaseStorage.html">帮助与反馈</a></a> </li>
-                <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li>
+                <!-- <li><i class="nav_4"></i><a href="CaseStorage.html">数据管理</a></a> </li> -->
             </ul>
         </div>
     </header>
@@ -57,11 +56,12 @@
         <!--选择时间-->
         <!-- <div class="static_top left"> -->
     
-            <div class="mavenmoniback" style="background: url(img/bg.jpg);position:absolute;top:80px;height: 92%; width: 100%;">
+            <div class="mavenmoniback" style="background: url(img/bg.jpg);position:absolute;top:80px;height: 94%; width: 100%;">
         <!-- <div class="staticTitle" style="position: absolute; top: 80px;">
             <i></i><span>燃气用量</span>
         </div> -->
         <!--数据总概-->
+        
         <div class="panel panel-default" style="position: absolute; top: 20%;
     top: 10px !important;
     left: 10%;
@@ -76,9 +76,9 @@
 
         <div class="panel-heading" style="font-size: 20px;text-align: center;color: white;">用能分析表</div>        
     
-            <table class="table" style="color: white;">
+            <table class="table" style="color: white;position: absolute;top: 5%;">
 
-        <thead><tr>
+        <thead style="height: 2%;"><tr>
             <th>时间</th></th>
             <th>工况瞬时流量</th></th>
             <th>燃气瞬时释放热量</th></th>
@@ -93,11 +93,49 @@
     </div>
     </div>
 
+    <div class="dropdown" style="position: absolute; top:10%;left:2%;height:10%">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 30%; position: relative;">
+          地点选择
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5" style="position:absolute;top: 15%;left: 2%; height:70%">
+          <li><a id="BQJAna" onclick="changeAnaLocation('BQJAna')">北七家</a></li>
+          <li><a id="XBWAna" onclick="changeAnaLocation('XBWAna')" style="background: white;">西北旺</a></li>
+          <li><a id="HSAna" onclick="changeAnaLocation('HSAna')" style="background: white;">黄寺</a></li>
+          <!-- <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li> -->
+        </ul>
+      </div>
+      <div class="dropdown" style="position: absolute; top:30%;left:2%;height:10%" >
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 30%; position: relative;" >
+          锅炉编号选择
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6" style="position:absolute;top: 19%;left: 2%; height:70%">
+          <li><a id="ana#1" onclick= "changeAna('ana#1')">#1</a></li>
+          <li><a id="ana#2" onclick= "changeAna('ana#2')" style="background: white;">#2</a></li>
+          <li><a id="ana#3" onclick= "changeAna('ana#3')" style="background: white;">#3</a></li>
+          <!-- <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li> -->
+        </ul>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="..." style="position: absolute;left: 2%;top:60%; height: 50px;">
+        <button type="button" class="btn btn-default" onclick="changeAnaData()">确认</button>
+      </div>
+
     <div class="energyShowDiv" style="position: absolute;height: 400px; width: 600px;top:57%;left:32%;background-color: #000A37;">
         <div id= "energyChart" style="color: white;border: none;margin-top: none;"></div>
     </div>
        
-    <!-- <div id= "mavenmonitor" style="position: absolute; top: 100px; left: 65%; right: 100%;width:600px; height: 400px;"></div> -->
+    <!-- <div id= "mavenmonitor" style="position: absolute; top: 100px; le
+        f
+        t
+        :
+         
+        6
+        5
+        %; right: 100%;width:600px; height: 400px;"></div> -->
 
     </div>
     <script src="js/jquery/jQuery-2.2.0.min.js"></script>
@@ -110,6 +148,7 @@
 <!-- <script src='js/mavenmonidata.js'></script> -->
 <script src="js/useAnalysisData.js"></script>
 <script src="js/energyShowChart.js"></script>
+<script src="js/energyAnaUpdate.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
